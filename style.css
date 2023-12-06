@@ -1,0 +1,302 @@
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 100px;
+    background-color: #000000; /* Black background for the entire page */
+}
+
+.logo {
+    margin-bottom: 80px;
+    margin-left: 100px;
+}
+ы
+#numpad {
+    background-color: #000; /* Black background for the numpad */
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+#Calculate {
+    background-color: darkorange;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.5em;
+    border-radius: 5px;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 50%; /* Center the button vertically */
+    right: 5px; /* Adjust the right distance from the input field */
+    transform: translateY(-75%) translateX(-20%); /* Center the button vertically */
+}
+
+#Calculate:hover {
+    background-color: #ff9f33; /* Darker orange on hover */
+}
+
+#explanationBox {
+    display: none; /* Initially hide the explanation box */
+    position: absolute;
+    top: 3px;
+    left: 101%;
+    font-size: 0.8em;
+    padding: 5px;
+    color: white;
+    background-color: #727272;
+    border-radius: 5px;
+}
+
+/* Show the explanation box when the button is hovered */
+#Calculate:hover + #explanationBox {
+    display: block;
+}
+
+#display {
+    font-style: italic;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    height: 30px;
+    width: 600px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: #eee;
+    text-align: left;
+    padding: 5px;
+    font-size: 1.2em;
+    border-bottom: 2px solid #ccc;
+    color: #000; /* Text color in the display area */
+}
+
+#display::-webkit-scrollbar {
+    height: 10px; /* Set the height of the scrollbar */
+}
+
+#display::-webkit-scrollbar-thumb {
+    background-color: #888; /* Set the color of the thumb */
+    border-radius: 6px; /* Set the border radius of the thumb */
+    border: 3px solid #fff; 
+}
+
+#display::-webkit-scrollbar-track {
+    background-color: #eee; /* Set the color of the track */
+    border-radius: 6px; /* Set the border radius of the track */
+}
+
+.text {
+    color: white;
+    font-family: Arial, serif;
+}
+
+#graph_func {
+    padding: 5px;
+    border-radius: 5px;
+    width: 620px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+.func {
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    height: 40px;
+    width: 80px;
+    margin-bottom: 10px;
+    margin-right: 2px;
+}
+
+.keypad {
+    width: 300px;
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.key {
+    border: none;
+    background-color: #ff8c00; /* Orange background for number buttons */
+    color: #fff; /* White text color for number buttons */
+    font-size: 1.2em;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.key:hover {
+    background-color: #ff9f33; /* Darker orange on hover */
+}
+
+.operation3 {
+    border-bottom-left-radius: 5px;
+}
+.operation4{
+    border-bottom-right-radius: 5px;
+}
+.operation1 {
+    border-top-right-radius: 5px;
+}
+
+.operation2 {
+    border-top-left-radius: 5px;
+}
+
+#historyNumpad {
+    display: flex;
+}
+
+#history-box {
+    overflow: auto;
+    margin-left: 20px;
+    border-radius: 10px;
+    background-color: white;
+    height: 350px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+#history-box::-webkit-scrollbar {
+    width: 8px;
+    margin-right: 5px;
+
+}
+
+#history-box::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 10px;
+
+}
+
+#history-box::-webkit-scrollbar-thumb:hover {
+    background-color: #737373; /* Change color on hover */
+}
+
+#history-box::-webkit-scrollbar-track {
+    background-color: #e5e4e4;
+}
+.historyList{
+    margin-top: 0px;
+    padding-inline-start: 0;
+    list-style: none;
+}
+.history{
+    border-bottom: #d3d3d3 1px solid;
+    list-style: none;
+    margin: 2px;
+    border-radius: 2px;
+    padding: 5px;
+}
+.history:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px darkorange;
+    background-color: rgba(255, 140, 0, 0.87);
+    color: white;
+    transition: all 0.15s linear;
+}
+
+#clearHistory{
+    position: relative;
+    margin-top: auto;
+    width: 100%;
+    height: 40px;
+    font-weight: 600;
+    font-size: 15px;
+    background-color: #d7d7d7;
+    border-style: none;
+    opacity: 0.8;
+}
+#clearHistory:hover{
+    transition: all 0.2s linear;
+    background-color: #ffa333;
+    opacity: 1;
+    color: #3d3d3d;
+
+}
+.finalInput{
+    padding-right: 10px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+
+#SolutionBox,
+#DisplayGraph {
+    width: 600px;
+    background-color: white;
+    position: static;
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 20px;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+footer {
+    background-color: black; 
+    color: #f2e9e4;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Spacing between Numpad and Footer */
+.numpad-container {
+    margin-bottom: 50px; 
+}
+
+.footer-content p {
+    margin: 20px 0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icon {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #9a8c98;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #c9ada7;
+}
+
+video#introVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    z-index: 100;
+}
+
+div#mainContent.hidden {
+    display: none;
+}
+
+div#mainContent.visible {
+    display: block;
+}
