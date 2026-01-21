@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Numpad</title>
 </head>
 <body>
     <video id="introVideo" autoplay muted>
         <source src="Start_screen.mp4" type="video/mp4">
     </video>
-<div class="numpad-container">
+<div id="mainContent" class="numpad-container">
     <img src="Prototypes/logo2.png" class="logo" alt="">
     <div id="numpad">
         <div class="input-container">
@@ -90,9 +90,7 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <!-- Script tags for JavaScript files -->
-<script type="module" src="js/maths.js"></script>
-<script type="module" src="js/script.js"></script>
-<script type="module" src="js/plotly-graphs.js"></script>
+<script type="module" src="script.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
