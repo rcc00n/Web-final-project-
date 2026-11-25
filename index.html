@@ -7,15 +7,16 @@
     <title>Numpad</title>
 </head>
 <body>
-    <video id="introVideo" autoplay muted>
+    <video id="introVideo" autoplay muted playsinline hidden aria-hidden="true">
         <source src="Start_screen.mp4" type="video/mp4">
     </video>
+    <button id="skipIntro" type="button" hidden>Skip intro</button>
 <div id="mainContent" class="numpad-container">
-    <img src="Prototypes/logo2.png" class="logo" alt="">
+    <h1 class="logo">Numpad</h1>
     <div id="numpad">
         <div class="input-container">
-            <input id="display" placeholder="Enter your mathematical expression (for eg. 6^9)" maxlength="53">
-            <button id="Calculate">=</button>
+            <input aria-label="Mathematical expression" id="display" placeholder="Enter your mathematical expression (for eg. 6^9)" maxlength="53">
+            <button aria-label="Calculate expression" id="Calculate">=</button>
             <div id="explanationBox">Calculate input</div>
         </div>
         <div id="graph_func">
@@ -92,18 +93,7 @@
 <!-- Script tags for JavaScript files -->
 <script type="module" src="script.js"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var video = document.getElementById('introVideo');
-        var mainContent = document.getElementById('mainContent');
-
-        video.addEventListener('ended', function() {
-            video.style.display = 'none'; // Hide the video
-            mainContent.classList.remove('hidden');
-            mainContent.classList.add('visible');
-        });
-    });
-</script>
+<script type="module" src="intro.js"></script>
 
 </body>
 </html>

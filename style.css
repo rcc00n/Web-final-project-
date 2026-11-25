@@ -1,14 +1,17 @@
 body {
     display: flex;
     justify-content: center;
-    height: 100vh;
-    margin: 100px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: clamp(24px, 7vw, 100px) 16px;
     background-color: #000000; /* Black background for the entire page */
 }
 
 .logo {
-    margin-bottom: 80px;
-    margin-left: 100px;
+    margin: 0 0 40px;
+    color: darkorange;
+    font: bold 2rem Arial, sans-serif;
 }
 #numpad {
     background-color: #000; /* Black background for the numpad */
@@ -16,7 +19,7 @@ body {
 
 .input-container {
     position: relative;
-    display: inline-block;
+    display: block;
 }
 
 #Calculate {
@@ -42,8 +45,9 @@ body {
 #explanationBox {
     display: none; /* Initially hide the explanation box */
     position: absolute;
-    top: 3px;
-    left: 101%;
+    right: 0;
+    top: 100%;
+    z-index: 1;
     font-size: 0.8em;
     padding: 5px;
     color: white;
@@ -60,8 +64,9 @@ body {
     font-style: italic;
     border-radius: 5px;
     margin-bottom: 15px;
-    height: 30px;
-    width: 600px;
+    height: 44px;
+    box-sizing: border-box;
+    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     background-color: #eee;
@@ -95,7 +100,11 @@ body {
 #graph_func {
     padding: 5px;
     border-radius: 5px;
-    width: 620px;
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 4px;
     overflow-y: hidden;
     overflow-x: auto;
     margin-top: 10px;
@@ -105,7 +114,8 @@ body {
     background-repeat: no-repeat;
     border-radius: 3px;
     height: 40px;
-    width: 80px;
+    width: 100%;
+    padding: 8px;
     margin-bottom: 10px;
     margin-right: 2px;
 }
@@ -146,16 +156,19 @@ body {
 }
 
 #historyNumpad {
-    display: flex;
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 20px;
 }
 
 #history-box {
     overflow: auto;
-    margin-left: 20px;
+    margin-left: 0;
     border-radius: 10px;
     background-color: white;
     height: 350px;
-    width: 280px;
+    width: 100%;
+    min-width: 0;
     display: flex;
     flex-direction: column;
 }
@@ -226,12 +239,14 @@ body {
 
 #SolutionBox,
 #DisplayGraph {
-    width: 600px;
+    box-sizing: border-box;
+    width: 100%;
     background-color: white;
     position: static;
     border-radius: 10px;
     margin-top: 20px;
-    height: 20px;
+    min-height: 20px;
+    overflow-wrap: anywhere;
     padding: 20px;
 }
 
@@ -255,6 +270,8 @@ footer {
 
 /* Spacing between Numpad and Footer */
 .numpad-container {
+    width: min(640px, 100%);
+    min-width: 0;
     margin-bottom: 50px; 
 }
 
@@ -284,10 +301,9 @@ video#introVideo {
     position: fixed;
     top: 0;
     left: 0;
-    min-width: 100vw;
-    min-height: 100vh;
     width: 100%;
-    height: auto;
+    height: 100%;
+    pointer-events: none;
     object-fit: cover;
     z-index: 100;
 }
@@ -298,4 +314,39 @@ div#mainContent.hidden {
 
 div#mainContent.visible {
     display: block;
+}
+
+/* The calculator remains usable if media or JavaScript cannot load. */
+[hidden] { display: none !important; }
+#skipIntro {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 101;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid darkorange;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+button:focus-visible, input:focus-visible, a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+#display:focus-visible { outline-color: darkorange; }
+.history { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+    #graph_func { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    #historyNumpad { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .keypad { width: 100%; }
+    #history-box { height: 160px; }
+    .func { min-height: 44px; margin: 0; }
+    #display { height: 48px; padding-right: 50px; font-size: 1rem; }
+    #Calculate { width: 40px; height: 40px; top: 4px; right: 4px; transform: none; }
+    .footer-content { overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+    video#introVideo, #skipIntro { display: none; }
 }

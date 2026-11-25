@@ -1,0 +1,2 @@
+# Browser-test tooling only; the static calculator has no runtime packages.
+playwright==1.55.0
