@@ -42,9 +42,6 @@ class CalculatorBrowserTests(unittest.TestCase):
                 route.abort()
             elif request.url.startswith(self.origin + '/'):
                 route.continue_()
-            elif request.url == 'https://cdn.plot.ly/plotly-latest.min.js':
-                # Existing optional graph CDN is outside these UI regressions.
-                route.fulfill(content_type='application/javascript', body='')
             else:
                 unexpected.append(request.url)
                 route.abort()
